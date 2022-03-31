@@ -14,6 +14,16 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 // * Hoe zorgt ik ervoor dat wanneer ik een cijfer tegenkom die aan de conditie voldoet, ik dit ergens kan bijhouden?
 // Log het antwoord in de terminal.
 
+
+let cumLaudeNum = 0;
+
+for (let i = 0; i < grades.length; i++) {
+    if (i >= 8) {
+        cumLaudeNum++;
+    }
+}
+console.log("1a: " + cumLaudeNum);
+
 // ---- Verwachte uitkomst: 6
 
 
@@ -28,6 +38,20 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 // cumLaude([8, 9, 4, 6, 10]) geeft 3
 
 
+function cumLaude(array) {
+    let cumLaudeNum = 0;
+
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] >= 8) {
+            cumLaudeNum++;
+        }
+    }
+    return cumLaudeNum;
+}
+
+console.log("1b: " + cumLaude(grades));
+console.log("1b: " + cumLaude([6, 4, 5]));
+console.log("1b: " + cumLaude([8, 9, 4, 6, 10]));
 
 
 /* Opdracht  2: Gemiddeld cijfer */
@@ -42,6 +66,13 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 
 // ---- Verwachte uitkomst: 6.642857142857143
 
+let sum = 0;
+for (let i = 0; i < grades.length; i++) {
+    sum += grades[i];
+}
+
+const averageSum = sum/grades.length;
+console.log("2a: " + averageSum);
 
 /* 2b: Omschrijven tot een herbruikbare functie */
 // Schrijf een functie genaamd averageGrade, die een array van cijfers verwacht (zoals grades) en het gemiddelde cijfer teruggeeft. Gebruik hiervoor jouw antwoord van 2a.
@@ -53,13 +84,25 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 // averageGrade([6, 4, 5]) geeft xxxx
 // averageGrade([8, 9, 4, 6, 10]) geeft xxxx
 
+function averageGrade(array) {
+    let sum = 0;
+    for (let i = 0; i < array.length; i++) {
+        sum += array[i];
+    }
+    return sum / array.length;
+}
+
+console.log("2b: " + averageGrade(grades));
+console.log("2b: " + averageGrade([6, 4, 5]));
+console.log("2b: " + averageGrade([8, 9, 4, 6, 10]));
 
 /* 2c: Afronden op twee decimalen */
 // Zorg ervoor dat het gemiddelde cijfer dat wordt teruggegeven uit de functie netjes wordt afgerond op twee decimalen.
 // Tip: Google is your best friend!
 
-
-
+console.log("2c: " + averageGrade(grades).toFixed(2));
+console.log("2c: " + averageGrade([6, 4, 5]).toFixed(2));
+console.log("2c: " + averageGrade([8, 9, 4, 6, 10]).toFixed(2));
 
 /* Bonusopdracht: hoogste cijfer */
 
@@ -69,6 +112,19 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 // * Op welke conditie moet ik checken?
 // * Hoe zorgt ik ervoor dat wanneer ik een cijfer tegenkom die aan de conditie voldoet, ik dit ergens kan opslaan?
 // Log het antwoord in de terminal.
+
+function highestGrades(array) {
+    let highest = 0;
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] > highest){
+            highest = array[i];
+        }
+    }
+    return highest;
+}
+
+console.log("3a: " + highestGrades(grades));
+
 
 // ---- Verwachte uitkomst: 9
 
@@ -82,3 +138,7 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 // highestGrade(grades) geeft 9
 // highestGrade([6, 4, 5]) geeft 6
 // highestGrade([8, 9, 4, 6, 10]) geeft 10
+
+console.log("3b: " + highestGrades(grades));
+console.log("3b: " + highestGrades([6, 4, 5]));
+console.log("3b: " + highestGrades([8, 9, 4, 6, 10]));
